@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aleena Khan - Introduction</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-primary: #f5f4f0;
+        --bg-secondary: #e9e5df;
+        --card-bg: #ffffff;
+        --text-main: #2c2b29;
+        --text-muted: #6b6963;
+        --accent-warm: #d97757;
+        --accent-cool: #4a6b7c;
+        --accent-warm-soft: #fdf3ef;
+        --accent-cool-soft: #edf3f6;
+        --border-color: rgba(44, 43, 41, 0.08);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-main);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        background-image:
+          radial-gradient(
+            at 10% 20%,
+            rgba(217, 119, 87, 0.06) 0px,
+            transparent 50%
+          ),
+          radial-gradient(
+            at 90% 80%,
+            rgba(74, 107, 124, 0.07) 0px,
+            transparent 50%
+          );
+      }
+
+      .container {
+        max-width: 1000px;
+        width: 100%;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      header .badge {
+        display: inline-block;
+        padding: 6px 14px;
+        background-color: var(--accent-cool-soft);
+        color: var(--accent-cool);
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+        border-radius: 20px;
+        margin-bottom: 16px;
+      }
+
+      header h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        color: var(--text-main);
+        margin-bottom: 8px;
+      }
+
+      header p {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        font-weight: 400;
+      }
+
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border-radius: 16px;
+        padding: 32px 24px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 220px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.03);
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 36px -10px rgba(44, 43, 41, 0.08);
+        border-color: rgba(44, 43, 41, 0.15);
+      }
+
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 24px;
+      }
+
+      .card-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .card:nth-child(odd) .card-icon {
+        background-color: var(--accent-warm-soft);
+        color: var(--accent-warm);
+      }
+
+      .card:nth-child(even) .card-icon {
+        background-color: var(--accent-cool-soft);
+        color: var(--accent-cool);
+      }
+
+      .card-hint {
+        font-size: 0.75rem;
+        color: var(--text-muted);
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+      }
+
+      .card-content h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: var(--text-main);
+      }
+
+      .card-content p,
+      .card-content ul {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        font-weight: 400;
+      }
+
+      .card-content ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .card-content ul li {
+        background-color: var(--bg-primary);
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        color: var(--text-main);
+      }
+
+      .card-details {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s ease,
+          opacity 0.3s ease,
+          margin-top 0.3s ease;
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+        border-top: 1px solid transparent;
+      }
+
+      .card:hover .card-details {
+        max-height: 150px;
+        opacity: 1;
+        margin-top: 16px;
+        padding-top: 14px;
+        border-color: var(--border-color);
+      }
+
+      .card:hover .card-hint {
+        opacity: 0;
+      }
+
+      footer {
+        margin-top: 50px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+      }
+
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 1.75rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <span class="badge">Virtual Internship Intro</span>
+        <h1>Aleena Khan</h1>
+        <p>Hover over each card to explore my profile & goals</p>
+      </header>
+
+      <div class="cards-grid">
+        <!-- Name Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">✦</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Name</h3>
+              <p>Aleena Khan</p>
+            </div>
+          </div>
+          <div class="card-details">
+            Aspiring technologist ready to build, learn, and collaborate with
+            fellow internee peers across the program.
+          </div>
+        </div>
+
+        <!-- Academic Background Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">🎓</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Academic Background</h3>
+              <p>Studying Information Technology (IT)</p>
+            </div>
+          </div>
+          <div class="card-details">
+            Currently enrolled as a <strong>final year student</strong>,
+            building a strong core in software design, problem-solving, and
+            systems architecture.
+          </div>
+        </div>
+
+        <!-- Tech Interests Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">⚡</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Tech Interests</h3>
+              <ul>
+                <li>AI</li>
+                <li>App Dev</li>
+                <li>Web Dev</li>
+                <li>Animation</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-details">
+            Passionate about merging intelligent AI models, responsive web/app
+            interfaces, and fluid motion design experiences.
+          </div>
+        </div>
+
+        <!-- Hobbies and Interests Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">🪐</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Hobbies & Interests</h3>
+              <p>Reading books (all genres), space, learning tech.</p>
+            </div>
+          </div>
+          <div class="card-details">
+            Exploring outer space mysteries, diving into diverse literary
+            worlds, and keeping pace with bleeding-edge technology trends.
+          </div>
+        </div>
+
+        <!-- Platform Gratitude Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">✨</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Gratitude & Platform</h3>
+              <p>Appreciation for Internee.pk</p>
+            </div>
+          </div>
+          <div class="card-details">
+            Deeply thankful to Internee.pk for crafting this empowering virtual
+            internship launchpad that bridges academia with real-world
+            execution.
+          </div>
+        </div>
+
+        <!-- Future Goals Card -->
+        <div class="card">
+          <div>
+            <div class="card-top">
+              <div class="card-icon">🚀</div>
+              <span class="card-hint">Hover</span>
+            </div>
+            <div class="card-content">
+              <h3>Future Goals</h3>
+              <p>App Development & Beyond</p>
+            </div>
+          </div>
+          <div class="card-details">
+            Mastering end-to-end app development lifecycles, shipping impactful
+            projects, refining collaborative workflows, and growing my
+            professional network.
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        Internee.pk Virtual Internship Program • Introduction Showcase
+      </footer>
+    </div>
+  </body>
+</html>
